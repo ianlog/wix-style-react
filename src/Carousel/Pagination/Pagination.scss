@@ -6,7 +6,7 @@
 
   &:global(.slick-dots) {
     position: static;
-    margin-top: 18px;
+    margin-top: 24px;
   
     :global(li.slick-active) {
       background-color: $B00;
@@ -16,7 +16,7 @@
    & .dot {
     width: 12px;
     height: 4px;
-    background-color: $B40;
+    background-color: $B30;
     border-radius: 2px;
     margin: 0 3px;
 
