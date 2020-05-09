@@ -184,7 +184,7 @@ const CoreAvatarPropTypes = {
   placeholder: PropTypes.node,
   /** Props for an `<img>` tag to be rendered as content. */
   imgProps: PropTypes.object,
-  /** HTML aria-label attribute value. To be applied on the root element. */
+  /** Used to define a string that labels the current element in case where a text label is not visible on the screen. */
   ariaLabel: PropTypes.string,
   /** HTML title attribute value. To be applied on the root element. */
   title: PropTypes.string,

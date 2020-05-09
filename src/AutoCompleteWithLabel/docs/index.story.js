@@ -20,6 +20,7 @@ import allComponents from '../../../stories/utils/allComponents';
 import AutoCompleteWithLabel from '..';
 
 import * as examples from './examples';
+import { createOptions } from '../../../stories/utils/playgroundUtils';
 
 const liveCode = config =>
   code({
@@ -32,12 +33,8 @@ const liveCode = config =>
 
 const example = props => liveCode(props);
 
-const options = [
-  { id: 0, value: 'Option 1' },
-  { id: 1, value: 'Option 2' },
-  { id: 2, value: 'Option 3' },
-  { id: 3, value: 'Option 4' },
-];
+const options4 = createOptions(4);
+const options10 = createOptions(10);
 
 export default {
   category: storySettings.category,
@@ -49,11 +46,17 @@ export default {
   componentProps: {
     value: '',
     label: 'my label',
+    options: options4,
   },
 
   exampleProps: {
-    options: [{ label: 'options', value: options }],
+    options: [
+      { label: '4 options', value: options4 },
+      { label: '10 options', value: options10 },
+    ],
   },
+
+  hiddenProps: ['dataHook', 'className', 'value'],
 
   sections: [
     header({

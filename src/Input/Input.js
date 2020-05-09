@@ -378,6 +378,8 @@ const borderRadiusValidator = (props, propName) => {
 Input.propTypes = {
   ariaControls: PropTypes.string,
   ariaDescribedby: PropTypes.string,
+
+  /** Used to define a string that labels the current element in case where a text label is not visible on the screen. */
   ariaLabel: PropTypes.string,
 
   /** Standard React Input autoFocus (focus the element on mount) */
@@ -428,6 +430,7 @@ Input.propTypes = {
   /** A single CSS class name to be appended to the Input's wrapper element. */
   className: PropTypes.string,
 
+  /** Used to reference element data when a form is submitted. */
   name: PropTypes.string,
 
   /** When set to true, this input will have no rounded corners on its left */
@@ -497,6 +500,8 @@ Input.propTypes = {
 
   /** Placement of status tooltips */
   tooltipPlacement: PropTypes.string,
+
+  /** Specifies the type of <input> element to display.default is text. */
   type: PropTypes.string,
 
   /** Inputs value */
