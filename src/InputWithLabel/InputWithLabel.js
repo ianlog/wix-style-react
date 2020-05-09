@@ -48,6 +48,7 @@ class InputWithLabel extends React.Component {
     onChange: PropTypes.func,
     name: PropTypes.string,
     type: PropTypes.string,
+    /** Used to define a string that labels the current element in case where a text label is not visible on the screen. */
     ariaLabel: PropTypes.string,
     /** Standard React Input autoFocus (focus the element on mount) */
     autoFocus: PropTypes.bool,

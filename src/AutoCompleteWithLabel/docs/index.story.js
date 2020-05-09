@@ -6,7 +6,6 @@ import {
   description,
   importExample,
   title,
-  columns,
   divider,
   code,
   playground,
@@ -38,18 +37,19 @@ const options10 = createOptions(10);
 
 export default {
   category: storySettings.category,
-  storyName: 'AutoCompleteWithLabel',
+  storyName: storySettings.storyName,
 
   component: AutoCompleteWithLabel,
   componentPath: '..',
 
-  componentProps: {
-    value: '',
+  componentProps: setState => ({
     label: 'my label',
     options: options4,
-  },
+    onSelect: option => setState({ value: option.value }),
+  }),
 
   exampleProps: {
+    onSelect: () => 'I was called!',
     options: [
       { label: '4 options', value: options4 },
       { label: '10 options', value: options10 },
@@ -60,28 +60,22 @@ export default {
 
   sections: [
     header({
-      issueUrl: 'https://github.com/wix/wix-style-react/issues/new',
-      sourceUrl:
-        'https://github.com/wix/wix-style-react/tree/master/src/AutoCompleteWithLabel/',
+      sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${AutoCompleteWithLabel.displayName}/`,
     }),
 
     tabs([
       tab({
         title: 'Description',
         sections: [
-          columns([
-            description({
-              title: 'Description',
-              text:
-                'AutoComplete component that uses the same design as in InputWithLabel with built in label.',
-            }),
-          ]),
+          description({
+            title: 'Description',
+            text:
+              'AutoComplete component that uses the same design as in InputWithLabel with built in label.',
+          }),
 
-          columns([
-            importExample(
-              "import { AutoCompleteWithLabel } from 'wix-style-react';",
-            ),
-          ]),
+          importExample(
+            "import { AutoCompleteWithLabel } from 'wix-style-react';",
+          ),
 
           divider(),
 

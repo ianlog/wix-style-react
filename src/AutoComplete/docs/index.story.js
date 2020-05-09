@@ -2,7 +2,6 @@ import React from 'react';
 import {
   header,
   description,
-  columns,
   importExample,
   title,
   example as baseExample,
@@ -73,19 +72,18 @@ export default {
         </Layout>
       ),
     }),
+
     tabs([
       tab({
         title: 'Description',
         sections: [
-          columns([
-            description({
-              title: 'Description',
-              text:
-                'A Dropdown presents a list of options and allows a user to select one of the options.',
-            }),
-          ]),
+          description({
+            title: 'Description',
+            text:
+              'A Dropdown presents a list of options and allows a user to select one of the options.',
+          }),
 
-          importExample("import { AutoComplete } from 'wix-style-react'"),
+          importExample(),
 
           divider(),
 

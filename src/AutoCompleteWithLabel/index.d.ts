@@ -28,6 +28,6 @@ export interface AutoCompleteWithLabelProps {
   native?: boolean;
 }
 
-export default class AutoCompleteWithLabel extends React.Component<
+export default class AutoCompleteWithLabel extends React.PureComponent<
   AutoCompleteWithLabelProps
 > {}
