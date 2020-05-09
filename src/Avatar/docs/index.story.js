@@ -78,7 +78,6 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    dataHook: storySettings.dataHook,
     name: 'John Doe',
     placeholder: undefined,
     imgProps: undefined,
@@ -92,6 +91,7 @@ export default {
     customIndication: undefined,
     presence: undefined,
     loading: false,
+    showIndicationOnHover: false,
   },
   exampleProps: {
     onIndicationClick: () => 'Clicked!',
@@ -122,6 +122,8 @@ export default {
     })),
   },
 
+  hiddenProps: ['dataHook', 'className'],
+
   sections: [
     header({
       component: <Avatar color="A1" name={'John Doe'} />,
@@ -135,7 +137,7 @@ export default {
             `Avatar is a type of element that visually represents a user, either as an image, placeholder or text (name initials)..`,
           ),
 
-          importExample("import { Avatar } from 'wix-style-react';"),
+          importExample(),
 
           divider(),
 
