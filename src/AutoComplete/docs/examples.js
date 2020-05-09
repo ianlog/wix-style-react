@@ -30,6 +30,9 @@ class ControlledAutoComplete extends React.Component {
           option.value.toLowerCase().indexOf(value.toLowerCase()) !==
           -1
         }
+        popoverProps={{
+          appendTo: 'window',
+        }}
       />
     );
   }

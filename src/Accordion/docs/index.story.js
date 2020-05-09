@@ -78,11 +78,14 @@ export default {
     itemsHook: storySettings.itemsHook,
     items: exampleItems[0].value,
     multiple: false,
+    skin: 'standard',
   },
 
   exampleProps: {
     items: exampleItems,
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header(),

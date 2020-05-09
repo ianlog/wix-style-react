@@ -38,6 +38,8 @@ export default {
     // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
   },
 
+  hiddenProps: ['dataHook', 'className'],
+
   sections: [
     header({
       sourceUrl: `https://github.com/wix/wix-style-react/tree/master/src/${<%= ComponentName %>.displayName}/`,

@@ -37,13 +37,23 @@ export default {
     children: 'Add Item',
     theme: 'dashes',
     alignItems: 'center',
-    dataHook: storySettings.dataHook,
     tooltipContent: 'tooltip content',
+    size: 'tiny',
+    disabled: false,
+    showIcon: true,
+    removePadding: false,
   },
 
   exampleProps: {
     children: '',
+    tooltipProps: [
+      { label: 'placement left', value: { placement: 'left' } },
+      { label: 'exitDelay 200ms', value: { exitDelay: 200 } },
+      { label: 'maxWidth 100px', value: { maxWidth: 100 } },
+    ],
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header({

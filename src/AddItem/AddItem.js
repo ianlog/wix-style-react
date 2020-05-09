@@ -48,10 +48,10 @@ class AddItem extends Component {
     /** Applied as data-hook HTML attribute that can be used to create driver in testing */
     dataHook: PropTypes.string,
 
-    /** When provided, hover will display a tooltip */
+    /** When provided, hover will display a tooltip - relevant only for theme `image` */
     tooltipContent: PropTypes.node,
 
-    /** Tooltip props */
+    /** Tooltip props - relevant only for theme `image` */
     tooltipProps: PropTypes.shape(TooltipCommonProps),
 
     /** Displays the plus icon */
