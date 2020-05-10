@@ -146,11 +146,12 @@ class Carousel extends React.Component {
         aspectRatio={Proportion.PREDEFINED_RATIOS.landscape}
       >
         <div
+          style={{ height: '100%' }}
           data-hook={dataHooks.imagesContainer}
           data-is-loading={this._isLoading()}
         >
           <img
-            src={image.src}
+            {...image}
             data-hook={dataHooks.carouselImage}
             className={styles.image}
             onLoad={() => this._onImageLoad()}
