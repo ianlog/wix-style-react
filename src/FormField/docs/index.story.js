@@ -12,7 +12,6 @@ import {
   api,
   example as baseExample,
   importExample,
-  description,
   playground,
   testkit,
 } from 'wix-storybook-utils/Sections';
@@ -25,6 +24,7 @@ import DatePicker from '../../DatePicker';
 import Dropdown from '../../Dropdown';
 import Checkbox from '../../Checkbox';
 import ToggleSwitch from '../../ToggleSwitch';
+import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
 
 const ID = 'formFieldId';
 const placeholder = 'Default text goes here...';
@@ -106,12 +106,7 @@ export default {
 
   exampleProps: {
     children: childrenExamples,
-    infoTooltipProps: [
-      { label: 'placement left', value: { placement: 'left' } },
-      { label: 'placement right', value: { placement: 'right' } },
-      { label: 'placement top', value: { placement: 'top' } },
-      { label: 'placement bottom', value: { placement: 'bottom' } },
-    ],
+    infoTooltipProps: commonTooltipPropsExample,
   },
 
   sections: [

@@ -61,6 +61,8 @@ export default {
     onClick: () => alert('Badge Clicked'),
   },
 
+  hiddenProps: ['dataHook', 'className'],
+
   sections: [
     header(),
     tabs([

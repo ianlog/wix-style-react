@@ -7,6 +7,7 @@ import { storySettings } from './storySettings';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 import ControlledComponentExample from './ControlledComponentExample';
 import ControlledComponentExampleRaw from '!raw-loader!./ControlledComponentExample';
+import { commonPopoverPropsExample } from '../../../stories/utils/playgroundUtils';
 
 const options = Object.values(SKIN).map((skin, id) => ({
   id: id.toString(),
@@ -37,7 +38,6 @@ export default {
   componentPath: '..',
 
   componentProps: setState => ({
-    dataHook: storySettings.dataHook,
     options,
     selectedId: '0',
     onSelect: ({ id }) => setState({ selectedId: id }),
@@ -49,7 +49,11 @@ export default {
     options: [{ label: 'All badges', value: options }],
     type: Object.keys(TYPE),
     size: Object.keys(SIZE),
+    popoverProps: commonPopoverPropsExample,
   },
+
+  hiddenProps: ['dataHook', 'className'],
+
   examples: (
     <CodeExample
       title="Controlled component can interrupt changes"

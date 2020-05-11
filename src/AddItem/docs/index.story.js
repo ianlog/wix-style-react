@@ -24,6 +24,7 @@ import { storySettings } from './storySettings';
 
 import themes from './themes.md';
 import sizes from './sizes.md';
+import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
 
 const example = config => baseExample({ components: allComponents, ...config });
 
@@ -46,11 +47,7 @@ export default {
 
   exampleProps: {
     children: '',
-    tooltipProps: [
-      { label: 'placement left', value: { placement: 'left' } },
-      { label: 'exitDelay 200ms', value: { exitDelay: 200 } },
-      { label: 'maxWidth 100px', value: { maxWidth: 100 } },
-    ],
+    tooltipProps: commonTooltipPropsExample,
   },
 
   hiddenProps: ['dataHook', 'className'],
