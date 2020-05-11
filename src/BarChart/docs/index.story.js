@@ -43,11 +43,11 @@ const items = [
     descriptionInfo: 'Revenue from ads is $42M',
   },
   {
-    value: 72000000,
-    label: '$72,000,000',
-    labelShort: '$72M',
+    value: 63000000,
+    label: '$63,000,000',
+    labelShort: '$63M',
     description: 'Other',
-    descriptionInfo: 'Other revenue is $72M',
+    descriptionInfo: 'Other revenue is $63M',
   },
 ];
 
@@ -67,7 +67,14 @@ export default {
       { label: '4 Items', value: items },
       { label: '1 Item', value: items.slice(0, 1) },
     ],
+    total: [
+      { label: '150M', value: 150000000 },
+      { label: '200M', value: 200000000 },
+    ],
+    onDescriptionInfoShown: () => 'I was called!',
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header(),

@@ -32,7 +32,6 @@ const items = [
   },
   {
     id: 2,
-    link: 'http://www.wix.com',
     value: 'Linked item',
   },
   {
@@ -51,14 +50,19 @@ export default {
     activeId: 1,
     items,
     size: 'medium',
+    theme: 'onGrayBackground',
   },
+
   exampleProps: {
     activeId: [1, 2, 3],
+    onClick: item => `I was called with ${JSON.stringify(item)}`,
     items: [
       { label: 'One item', value: [{ id: 1, value: 'Homepage' }] },
       { label: 'Three items', value: items },
     ],
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header(),

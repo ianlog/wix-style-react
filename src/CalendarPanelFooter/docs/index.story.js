@@ -10,7 +10,6 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    dataHook: storySettings.dataHook,
     primaryActionDisabled: false,
     primaryActionOnClick: () => null,
     secondaryActionOnClick: () => null,
@@ -23,4 +22,6 @@ export default {
     primaryActionLabel: 'submit',
     secondaryActionLabel: 'cancel',
   },
+
+  hiddenProps: ['dataHook', 'className'],
 };

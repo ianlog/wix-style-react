@@ -71,7 +71,6 @@ export default {
   componentPath: '..',
 
   componentProps: setState => ({
-    dataHook: storySettings.dataHook,
     onChange: value => setState({ value }),
     selectionMode: 'day',
     presets: rangePresets,
@@ -102,5 +101,27 @@ export default {
         value: rangePresets,
       },
     ],
+    locale: [
+      'en',
+      'es',
+      'pt',
+      'fr',
+      'de',
+      'pl',
+      'it',
+      'ru',
+      'ja',
+      'ko',
+      'tr',
+      'sv',
+      'no',
+      'nl',
+      'da',
+      'zh',
+      'th',
+      'cs',
+    ],
   },
+
+  hiddenProps: ['dataHook', 'className'],
 };

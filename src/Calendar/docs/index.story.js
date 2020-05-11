@@ -25,11 +25,12 @@ export default {
     showYearDropdown: false,
     showMonthDropdown: false,
     shouldCloseOnSelect: true,
-    locale: 'en',
     excludePastDates: false,
     selectionMode: 'day',
-    dataHook: storySettings.dataHook,
+    autoFocus: true,
+    numOfMonths: 1,
   }),
+
   exampleProps: {
     value: [
       {
@@ -49,7 +50,30 @@ export default {
         value: { from: addDays(new Date(), -6), to: new Date() },
       },
     ],
+    locale: [
+      'en',
+      'es',
+      'pt',
+      'fr',
+      'de',
+      'pl',
+      'it',
+      'ru',
+      'ja',
+      'ko',
+      'tr',
+      'sv',
+      'no',
+      'nl',
+      'da',
+      'zh',
+      'th',
+      'cs',
+    ],
   },
+
+  hiddenProps: ['dataHook', 'className'],
+
   examples: (
     <Container>
       <Row>

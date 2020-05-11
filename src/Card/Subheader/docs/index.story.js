@@ -24,7 +24,11 @@ export default {
 
   componentProps: {
     title: 'Card Subheader',
+    suffix: '',
+    skin: 'standard',
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header({

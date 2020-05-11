@@ -43,7 +43,6 @@ export default {
   componentPath: '..',
 
   componentProps: {
-    dataHook: 'browser-preview-widget-story',
     skin: skins.neutral,
     backgroundColor: '',
     browserBarSize: browserBarSizes.size12,
@@ -51,6 +50,8 @@ export default {
     width: '100%',
     children: childNode,
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header({
