@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './CustomModalLayout.st.css';
+import { st, classes } from './CustomModalLayout.st.css';
 import BaseModalLayout from '../BaseModalLayout';
 
 /** CustomModalLayout */
@@ -31,11 +31,7 @@ class CustomModalLayout extends React.PureComponent {
   render() {
     const { width, dataHook } = this.props;
     return (
-      <div
-        {...styles('root', {}, this.props)}
-        data-hook={dataHook}
-        style={{ width }}
-      >
+      <div className={st(classes.root)} data-hook={dataHook} style={{ width }}>
         <BaseModalLayout {...this.props}></BaseModalLayout>
       </div>
     );
