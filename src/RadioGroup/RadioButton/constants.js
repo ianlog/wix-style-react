@@ -3,4 +3,5 @@ export const dataHooks = {
   RadioButtonLabel: 'RadioButton-label',
   RadioButtonRadio: 'RadioButton-radio',
   RadioButtonChildren: 'RadioButton-children',
+  RadioButtonWrapper: 'RadioButton-wrapper',
 };

@@ -59,13 +59,17 @@ class RadioButton extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className={classnames(styles.optionWrapper)} style={style}>
+      <div
+        className={classnames(styles.optionWrapper)}
+        style={style}
+        data-hook={dataHook}
+      >
         <div
           className={classnames(styles.radioWrapper, {
             [styles.disabled]: disabled,
             [styles.checked]: checked,
           })}
-          data-hook={dataHook}
+          data-hook={dataHooks.RadioButtonWrapper}
           tabIndex={disabled ? null : tabIndex}
           onFocus={this.props.focusableOnFocus}
           onBlur={this.props.focusableOnBlur}
