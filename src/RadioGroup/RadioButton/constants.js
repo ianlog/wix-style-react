@@ -1,7 +1,8 @@
 export const dataHooks = {
-  RadioButtonContent: 'RadioButton-content',
+  RadioButtonWrapper: 'RadioButton-wrapper',
+  RadioButtonInput: 'RadioButton-input',
   RadioButtonLabel: 'RadioButton-label',
   RadioButtonRadio: 'RadioButton-radio',
   RadioButtonChildren: 'RadioButton-children',
-  RadioButtonWrapper: 'RadioButton-wrapper',
+  RadioButtonContent: 'RadioButton-content',
 };
