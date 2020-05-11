@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './MessageModalLayout.st.css';
+import { st, classes } from './MessageModalLayout.st.css';
 import BaseModalLayout from '../BaseModalLayout';
 
 /** MessageModalLayout */
@@ -10,8 +10,8 @@ class MessageModalLayout extends React.PureComponent {
     const { illustration } = this.props;
 
     return (
-      <div className={styles.illustrationContainer}>
-        <div className={styles.imageWrapper}>
+      <div className={classes.illustrationContainer}>
+        <div className={classes.imageWrapper}>
           {typeof illustration === 'string' ? (
             <img src={illustration} width="100%" />
           ) : (
@@ -42,7 +42,7 @@ class MessageModalLayout extends React.PureComponent {
 
     return (
       <div
-        {...styles('root', { theme: new_theme }, this.props)}
+        className={st(classes.root, { theme: new_theme })}
         data-hook={dataHook}
         style={{ width }}
       >
