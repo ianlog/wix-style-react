@@ -1,9 +1,12 @@
 import { isFocused } from 'wix-ui-test-utils/protractor';
 import buttonDriverFactory from './RadioButton/RadioButton.protractor.driver';
+import { dataHooks as RadioButtonDataHooks } from './RadioButton/constants';
 
 const radioGroupDriverFactory = component => {
   const getRadioButtonLabel = index =>
-    component.$$(`div [data-hook="radio-label"]`).get(index);
+    component
+      .$$(`div [data-hook="${RadioButtonDataHooks.RadioButtonLabel}"]`)
+      .get(index);
   const getRadioButtonRoot = index =>
     component.all(by.xpath('./div/div')).get(index);
 

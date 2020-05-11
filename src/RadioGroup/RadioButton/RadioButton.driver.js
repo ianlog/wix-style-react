@@ -1,4 +1,5 @@
 import ReactTestUtils from 'react-dom/test-utils';
+import { dataHooks } from './constants';
 
 const radioButtonDriverFactory = ({ element }) => {
   const radioWrapper = () => element.childNodes[0];
@@ -15,7 +16,7 @@ const radioButtonDriverFactory = ({ element }) => {
     getValue: () => radioButton().value,
     getTabIndex: () => radioWrapper().getAttribute('tabIndex'),
     getContent: () =>
-      element.querySelector('[data-hook="radio-button-content"]'),
+      element.querySelector(`[data-hook="${dataHooks.RadioButtonContent}"]`),
   };
 };
 

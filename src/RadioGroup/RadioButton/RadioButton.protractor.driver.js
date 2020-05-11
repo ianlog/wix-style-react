@@ -1,9 +1,12 @@
 import focusableDriverFactory from '../../common/Focusable/Focusable.protractor.driver';
 import { mergeDrivers } from '../../../test/utils/private-drivers';
+import { dataHooks } from './constants';
 
 const buttonDriverFactory = element => {
-  const getRadio = () => element.$(`[data-hook="radiobutton-radio"]`);
-  const getTextChildren = () => element.$(`[data-hook="radiobutton-children"]`);
+  const getRadio = () =>
+    element.$(`[data-hook="${dataHooks.RadioButtonRadio}"]`);
+  const getTextChildren = () =>
+    element.$(`[data-hook="${dataHooks.RadioButtonChildren}"]`);
 
   const focusableDriver = focusableDriverFactory({
     rootElement: element,

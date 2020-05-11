@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import styles from '../RadioGroup.scss';
 import { withFocusable, focusableStates } from '../../common/Focusable';
 import Text from '../../Text';
+import { dataHooks } from './constants';
 
 class RadioButton extends React.PureComponent {
   static displayName = 'RadioGroup.Radio';
@@ -81,7 +82,7 @@ class RadioButton extends React.PureComponent {
           />
 
           <label
-            data-hook="radio-label"
+            data-hook={dataHooks.RadioButtonLabel}
             style={{ lineHeight }}
             htmlFor={this.id}
             className={classnames({
@@ -92,7 +93,7 @@ class RadioButton extends React.PureComponent {
             <div
               style={{ height: lineHeight }}
               className={styles.radioButtonWrapper}
-              data-hook="radiobutton-radio"
+              data-hook={dataHooks.RadioButtonRadio}
             >
               <div
                 className={classnames(styles.radio, {
@@ -104,7 +105,7 @@ class RadioButton extends React.PureComponent {
             {children && (
               <Text
                 className={styles.children}
-                data-hook="radiobutton-children"
+                data-hook={dataHooks.RadioButtonChildren}
                 tagName="div"
                 size="medium"
                 weight="thin"
@@ -116,7 +117,10 @@ class RadioButton extends React.PureComponent {
           </label>
         </div>
         {content && (
-          <div className={styles.content} data-hook="radio-button-content">
+          <div
+            className={styles.content}
+            data-hook={dataHooks.RadioButtonContent}
+          >
             {content}
           </div>
         )}
