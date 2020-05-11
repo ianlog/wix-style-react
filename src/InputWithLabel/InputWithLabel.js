@@ -5,7 +5,7 @@ import LabelledElement from '../LabelledElement';
 import Input from '../Input';
 import Text from '../Text';
 import PropTypes from 'prop-types';
-import styles from './InputWithLabel.st.css';
+import { classes } from './InputWithLabel.st.css';
 import dataHooks from './dataHooks';
 import classNames from 'classnames';
 
@@ -15,7 +15,7 @@ const getSuffixContainer = suffix =>
       <div
         data-hook={`suffix-container`}
         key={`suffix-container-${index}`}
-        className={styles.groupIcon}
+        className={classes.groupIcon}
       >
         {item}
       </div>
@@ -101,7 +101,7 @@ class InputWithLabel extends React.Component {
     return (
       <div
         data-hook={dataHook}
-        className={status ? undefined : styles.statusMessagePlaceholder}
+        className={status ? undefined : classes.statusMessagePlaceholder}
       >
         <LabelledElement
           value={value}
@@ -121,7 +121,7 @@ class InputWithLabel extends React.Component {
             onFocus={onFocus}
             onBlur={onBlur}
             dataHook={dataHooks.input}
-            className={classNames(className, styles.inputContainer)}
+            className={classNames(className, classes.inputContainer)}
             size="medium"
             value={value}
             suffix={suffix ? getSuffixContainer(suffix) : []}
@@ -135,14 +135,14 @@ class InputWithLabel extends React.Component {
             skin="error"
             size="small"
             weight="normal"
-            className={styles.statusMessage}
+            className={classes.statusMessage}
           >
-            <span className={styles.statusMessageIcon}>
+            <span className={classes.statusMessageIcon}>
               <StatusAlertSmall />
             </span>
             <span
               data-hook={dataHooks.errorMessage}
-              className={styles.errorMessageContent}
+              className={classes.errorMessageContent}
             >
               {statusMessage}
             </span>
