@@ -59,13 +59,17 @@ export default {
     onChange: ({ target: { checked } }) => setState({ checked }),
     errorMessage: '',
     hasError: false,
-    dataHook: 'storybook-checkbox',
+    disabled: false,
+    checked: false,
+    size: 'medium',
   }),
 
   exampleProps: {
     children: labelExamples,
     onChange: ({ target: { checked } }) => (checked ? 'Checked' : 'Unchecked'),
   },
+
+  hiddenProps: ['dataHook', 'className', 'id', 'hover'],
 
   sections: [
     header({

@@ -42,6 +42,8 @@ export default {
     size: ['small', 'medium', 'large'],
   },
 
+  hiddenProps: ['dataHook', 'className'],
+
   sections: [
     header({
       issueUrl: 'https://github.com/wix/wix-style-react/issues/new',

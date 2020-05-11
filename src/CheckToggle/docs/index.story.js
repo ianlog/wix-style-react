@@ -19,6 +19,7 @@ import allComponents from '../../../stories/utils/allComponents';
 import * as examples from './examples';
 
 import CheckToggle from '..';
+import { commonTooltipPropsExample } from '../../../stories/utils/playgroundUtils';
 
 const example = config => baseExample({ components: allComponents, ...config });
 const code = config => baseCode({ components: allComponents, ...config });
@@ -30,18 +31,21 @@ export default {
   component: CheckToggle,
   componentPath: '..',
 
-  componentProps: {
+  componentProps: (setState, getState) => ({
     checked: true,
     size: 'small',
     skin: 'standard',
     disabled: false,
     tooltipContent: 'Click Me!',
-  },
+    onChange: () => setState({ checked: !getState().checked }),
+  }),
 
   exampleProps: {
-    // Put here presets of props, for more info:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-storybook-utils/docs/usage.md#using-list
+    tooltipProps: commonTooltipPropsExample,
+    onChange: () => 'I was called',
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header({

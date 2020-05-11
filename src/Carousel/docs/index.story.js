@@ -69,13 +69,16 @@ export default {
     images: imagesExamples[0].value,
     infinite: true,
     autoplay: false,
-    dataHook: storySettings.dataHook,
   }),
 
   exampleProps: {
     images: imagesExamples,
     children: childrenExamples,
+    beforeChange: (before, after) => `I was called with ${before}, ${after}`,
+    afterChange: index => `I was called with ${index}`,
   },
+
+  hiddenProps: ['dataHook', 'className'],
 
   sections: [
     header({
