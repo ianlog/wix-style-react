@@ -12,9 +12,44 @@
   cursor: -webkit-grabbing;
 }
 
-.itemPreview {}
+.itemPreview {
+}
 
 .list {
   position: relative;
   display: inline-block;
+}
+
+.gridItemPlaceholder {
+  border: 1px solid transparent;
+  background-color: $D70;
+  color: transparent;
+  cursor: -webkit-grabbing;
+
+  &.isInitialPositionToDrop {
+    background-color: $B40;
+  }
+}
+
+.withGridItemStrip {
+  &:after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    border-radius: 2px;
+    background: $B00;
+    right: -12px;
+  }
+
+  &.withGridItemStripRight {
+    &:after {
+      right: 0;
+      left: -12px;
+    }
+  }
+}
+
+.gridItemPreview {
+  background-color: $B50;
 }

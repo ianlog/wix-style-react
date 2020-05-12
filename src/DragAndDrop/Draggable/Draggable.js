@@ -166,13 +166,13 @@ Draggable.propTypes = {
   canDrag: PropTypes.func,
 
   delay: PropTypes.number,
-  /** 
-    In case that you are using some external props inside of renderItems method,
-    you need to define them here.
+  /**
+   In case that you are using some external props inside of renderItems method,
+   you need to define them here.
 
-    renderItem = ({ item }) => <div key={item.id}>{this.props.myAwesomeProp}</div>
+   renderItem = ({ item }) => <div key={item.id}>{this.props.myAwesomeProp}</div>
 
-    render() {
+   render() {
       return (
         <SortableList
           ...
@@ -180,7 +180,7 @@ Draggable.propTypes = {
         />
       )
     }
-  */
+   */
   listOfPropsThatAffectItems: PropTypes.array,
 };
 

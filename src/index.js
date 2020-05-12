@@ -164,3 +164,4 @@ export { default as Pagination } from './Pagination';
 export { default as CheckToggle } from './CheckToggle';
 export { default as Timeline } from './Timeline';
 export { default as ComposerSidebar } from './ComposerSidebar';
+export { default as SortableGrid } from './SortableGrid';

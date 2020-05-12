@@ -196,6 +196,8 @@ class DraggableSource extends React.Component {
       id,
       item,
       delayed,
+      withStrip,
+      isInitialPositionToDrop,
     } = this.props;
 
     const content = withHandle
@@ -210,6 +212,8 @@ class DraggableSource extends React.Component {
             return connectDragSource(handleWithRef);
           },
           delayed,
+          withStrip,
+          isInitialPositionToDrop,
         })
       : connectDragSource(
           renderItem({
@@ -218,6 +222,8 @@ class DraggableSource extends React.Component {
             isPlaceholder: isDragging,
             connectHandle: noop,
             delayed,
+            withStrip,
+            isInitialPositionToDrop,
           }),
         );
 
