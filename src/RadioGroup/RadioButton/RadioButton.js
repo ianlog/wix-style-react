@@ -76,6 +76,7 @@ class RadioButton extends React.PureComponent {
           {...focusableStates(this.props)}
         >
           <input
+            data-hook={dataHooks.RadioButtonInput}
             type="radio"
             name={name}
             value={value}
