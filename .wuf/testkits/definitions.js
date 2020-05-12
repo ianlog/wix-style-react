@@ -27,7 +27,7 @@ module.exports = {
     enzymeLegacyTestkit: true,
     protractorLegacyTestkit: true,
     puppeteerLegacyTestkit: true,
-    puppeteerTypeImportName: 'TablePuppeteerDriver'
+    puppeteerTypeImportName: 'TablePuppeteerDriver',
   },
 
   TableActionCell: {
@@ -77,7 +77,7 @@ module.exports = {
     enzymeLegacyTestkit: true,
     protractorLegacyTestkit: true,
     puppeteerLegacyTestkit: true,
-    puppeteerTypeImportName: 'HeadingPuppeteerDriver'
+    puppeteerTypeImportName: 'HeadingPuppeteerDriver',
   },
 
   Header: {
@@ -126,7 +126,7 @@ module.exports = {
     enzymeLegacyTestkit: true,
     protractorLegacyTestkit: true,
     puppeteerLegacyTestkit: true,
-    puppeteerTypeImportName: 'TextPuppeteerDriver'
+    puppeteerTypeImportName: 'TextPuppeteerDriver',
   },
 
   Calendar: {
@@ -221,7 +221,8 @@ module.exports = {
     protractorTestkitPath:
       '../src/RadioGroup/RadioButton/RadioButton.protractor.driver',
     skipSanityTest: true,
-    noPuppeteerTestkit: true,
+    puppeteerTestkitPath:
+      '../src/RadioGroup/RadioButton/RadioButton.uni.driver',
   },
 
   RadioGroup: {
@@ -302,7 +303,7 @@ module.exports = {
     enzymeLegacyTestkit: true,
     protractorLegacyTestkit: true,
     puppeteerLegacyTestkit: true,
-    puppeteerTypeImportName: 'NoBorderInputPuppeteerDriver'
+    puppeteerTypeImportName: 'NoBorderInputPuppeteerDriver',
   },
 
   Modal: {
@@ -371,7 +372,7 @@ module.exports = {
     enzymeLegacyTestkit: true,
     protractorLegacyTestkit: true,
     puppeteerLegacyTestkit: true,
-    puppeteerTypeImportName: 'FormFieldPuppeteerDriver'
+    puppeteerTypeImportName: 'FormFieldPuppeteerDriver',
   },
 
   ToggleSwitch: {
