@@ -2,7 +2,7 @@ import { textUniDriverFactory } from '../Text/Text.uni.driver';
 import { baseUniDriverFactory, ReactBase } from '../../test/utils/unidriver';
 
 export const selectorUniDriverFactory = base => {
-  const toggleInput = () => base.$('[data-hook="toggle"] > input');
+  const toggleInput = () => base.$('[data-hook="toggle"] input');
   const image = () => base.$('[data-hook="selector-image"]');
   const titleTextDriver = () =>
     textUniDriverFactory(base.$('[data-hook="selector-title"]'));

@@ -6,8 +6,7 @@ import textDriverFactory from '../Text/Text.driver';
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 const selectorDriverFactory = ({ element }) => {
-  const toggleInput = () =>
-    element.querySelector('[data-hook="toggle"] > input');
+  const toggleInput = () => element.querySelector('[data-hook="toggle"] input');
   const image = () => element.querySelector('[data-hook="selector-image"]');
   const titleTextDriver = () =>
     textTestkitFactory({ wrapper: element, dataHook: 'selector-title' });
