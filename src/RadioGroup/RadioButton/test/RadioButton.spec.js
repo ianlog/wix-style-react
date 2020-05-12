@@ -1,22 +1,22 @@
 import React from 'react';
-import RadioButton from './RadioButton';
-import radioButtonDriverFactory from './RadioButton.driver';
+import RadioButton from '../RadioButton';
+import radioButtonDriverFactory from '../RadioButton.driver';
 import { RadioButtonPrivateDriverFactory } from './RadioButton.private.uni.driver';
 import {
   isTestkitExists,
   isEnzymeTestkitExists,
   isUniTestkitExists,
-} from '../../../test/utils/testkit-sanity';
+} from '../../../../test/utils/testkit-sanity';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
-import { radioButtonTestkitFactory } from '../../../testkit';
-import { radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory } from '../../../testkit/enzyme';
-import { radioButtonUniDriverFactory } from './RadioButton.uni.driver';
+import { radioButtonTestkitFactory } from '../../../../testkit';
+import { radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory } from '../../../../testkit/enzyme';
+import { radioButtonUniDriverFactory } from '../RadioButton.uni.driver';
 import { mount } from 'enzyme';
 import {
   cleanup,
   createRendererWithDriver,
   createRendererWithUniDriver,
-} from '../../../test/utils/unit';
+} from '../../../../test/utils/unit';
 
 describe(RadioButton.displayName, () => {
   describe('[sync]', () => {
