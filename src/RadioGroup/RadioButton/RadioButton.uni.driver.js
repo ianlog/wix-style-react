@@ -29,15 +29,17 @@ export const radioButtonUniDriverFactory = (base, body) => {
     getLabel: () => radioButtonLabel().text(),
 
     /** Getting the component's label element */
-    getLabelElement: () => radioButtonLabel().element(),
+    // eslint-disable-next-line no-restricted-properties
+    getLabelElement: () => radioButtonLabel().getNative(),
 
     /** Getting the component's input value */
     getValue: () => radioButtonInput()._prop('value'),
 
     /** Getting the component's tab-index value */
-    getTabIndex: () => radioButtonWrapper().attr('tab-index'),
+    getTabIndex: () => radioButtonWrapper().attr('tabIndex'),
 
     /** Getting the component's content element */
-    getContent: () => radioButtonContent(),
+    // eslint-disable-next-line no-restricted-properties
+    getContent: () => radioButtonContent().getNative(),
   };
 };
