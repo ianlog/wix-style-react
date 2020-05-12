@@ -8,7 +8,7 @@ $double-gap: 12px;
 .root {
   position: relative;
   display: flex;
-  align-items: center;
+  //align-items: center;
   border: solid 1px;
   border-radius: 6px;
   @include BoxSizing();
@@ -157,7 +157,7 @@ $double-gap: 12px;
     @include Size($height: 34px, $fontSize: 16px);
   }
   &-large {
-    @include Size($height: 60px, $fontSize: 16px);
+    @include Size($height: 42px, $fontSize: 16px);
   }
   &-large-with-selection {
     @include Size($height: 58px, $fontSize: 16px);
