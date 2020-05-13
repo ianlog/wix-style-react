@@ -1,187 +1,191 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import RadioGroup from '../RadioGroup';
 import radioGroupDriverFactory from '../RadioGroup.driver';
-import { radioGroupTestkitFactory } from '../../../testkit';
+import { radioGroupPrivateDriverFactory } from './RadioGroup.private.uni.driver';
 import {
-  isTestkitExists,
-  isEnzymeTestkitExists,
-} from '../../../test/utils/testkit-sanity';
-import { radioGroupTestkitFactory as enzymeRadioGroupTestkitFactory } from '../../../testkit/enzyme';
-import { createRendererWithDriver, cleanup } from '../../../test/utils/unit';
+  cleanup,
+  createRendererWithDriver,
+  createRendererWithUniDriver,
+} from '../../../test/utils/unit';
 
-describe('RadioGroup', () => {
-  const render = createRendererWithDriver(radioGroupDriverFactory);
-  const createDriver = jsx => render(jsx).driver;
-
-  const defaultRadioGroup = props => (
-    <RadioGroup {...props}>
-      <RadioGroup.Radio value={1}>Option 1</RadioGroup.Radio>
-      <RadioGroup.Radio value={2}>Option 2</RadioGroup.Radio>
-      <RadioGroup.Radio value={3}>Option 3</RadioGroup.Radio>
-      <RadioGroup.Radio value={4}>Option 4</RadioGroup.Radio>
-    </RadioGroup>
-  );
-
-  afterEach(cleanup);
-
-  it('should render', () => {
-    const driver = createDriver(<RadioGroup />);
-    expect(driver.exists()).toBe(true);
+describe(RadioGroup.displayName, () => {
+  describe('[sync]', () => {
+    runTests(createRendererWithDriver(radioGroupDriverFactory));
   });
 
-  it('should have the correct radio buttons', () => {
-    const driver = createDriver(defaultRadioGroup());
-    expect(driver.getNumberOfRadios()).toBe(4);
-    expect(driver.getRadioAtIndex(0)).toBeTruthy();
-    expect(driver.getRadioValueAt(0)).toBe('1');
-
-    const nonExistingIndex = 9999;
-    expect(driver.getRadioAtIndex(nonExistingIndex)).toBeUndefined();
-    expect(() => driver.getRadioValueAt(nonExistingIndex)).toThrow(
-      `No RadioButton at index ${nonExistingIndex}`,
-    );
+  describe('[async]', () => {
+    runTests(createRendererWithUniDriver(radioGroupPrivateDriverFactory), true);
   });
 
-  it('should return true if a radio button is disabled and false otherwise', () => {
-    const disabledRadios = [1, 2];
-    const driver = createDriver(defaultRadioGroup({ disabledRadios }));
-    expect(driver.isRadioDisabled(0)).toBe(true);
-    expect(driver.isRadioDisabled(1)).toBe(true);
-    expect(driver.isRadioDisabled(2)).toBe(false);
-    expect(driver.isRadioDisabled(3)).toBe(false);
-  });
+  function runTests(render, async) {
+    afterEach(cleanup);
 
-  it('should check the option that matches the initial value', () => {
-    const value = 2;
-    const driver = createDriver(defaultRadioGroup({ value }));
-    expect(driver.getSelectedValue()).toBe(value.toString());
-  });
+    const createDriver = jsx => render(jsx).driver;
 
-  it('should update selected value after change to props', () => {
-    const { driver, rerender } = render(defaultRadioGroup({ value: 1 }));
-    const value = 2;
-    rerender(defaultRadioGroup({ value: 2 }));
-    expect(driver.getSelectedValue()).toBe(value.toString());
-  });
-
-  it('should not check any options if value was not matched', () => {
-    const value = 10;
-    const driver = createDriver(defaultRadioGroup({ value }));
-    expect(driver.getSelectedValue()).toBe(null);
-  });
-
-  describe('onChange attribute', () => {
-    it('should be called with the correct option value', () => {
-      const onChange = jest.fn();
-      const driver = createDriver(defaultRadioGroup({ onChange }));
-
-      // Select by value
-      driver.selectByValue(1);
-      expect(onChange).toHaveBeenNthCalledWith(1, 1);
-
-      // Select by index
-      driver.selectByIndex(1);
-      expect(onChange).toHaveBeenNthCalledWith(2, 2);
-    });
-
-    it('should not be called upon checked option', () => {
-      const value = 1;
-      const onChange = jest.fn();
-      const driver = createDriver(defaultRadioGroup({ onChange, value }));
-
-      // Select by value
-      driver.selectByValue(1);
-      expect(onChange).not.toHaveBeenCalled();
-
-      // Select by index
-      driver.selectByIndex(0);
-      expect(onChange).not.toHaveBeenCalled();
-    });
-
-    it('should not be called upon disabled option', () => {
-      const disabledRadios = [1];
-      const onChange = jest.fn();
-      const driver = createDriver(
-        defaultRadioGroup({ onChange, disabledRadios }),
-      );
-
-      // Select by value
-      driver.selectByValue(1);
-      expect(onChange).not.toHaveBeenCalled();
-
-      // Select by index
-      driver.selectByIndex(0);
-      expect(onChange).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('vAlign attribute', () => {
-    const radioGroup = props => (
+    const DefaultRadioGroup = props => (
       <RadioGroup {...props}>
-        <RadioGroup.Radio value={1}>Option 1</RadioGroup.Radio>
-        <RadioGroup.Radio value={2}>Option 2</RadioGroup.Radio>
+        <RadioGroup.Radio value={'1'}>Option 1</RadioGroup.Radio>
+        <RadioGroup.Radio value={'2'}>Option 2</RadioGroup.Radio>
+        <RadioGroup.Radio value={'3'}>Option 3</RadioGroup.Radio>
+        <RadioGroup.Radio value={'4'}>Option 4</RadioGroup.Radio>
       </RadioGroup>
     );
 
-    it('should have a default vcenter class', () => {
-      const driver = createDriver(radioGroup());
-      expect(driver.getClassOfLabelAt(0)).toContain('vcenter');
-      expect(driver.getClassOfLabelAt(1)).toContain('vcenter');
+    it('should render', async () => {
+      const driver = createDriver(<RadioGroup />);
+      expect(await driver.exists()).toBe(true);
     });
 
-    it('should have a vtop class', () => {
-      const driver = createDriver(radioGroup({ vAlign: 'top' }));
-      expect(driver.getClassOfLabelAt(0)).toContain('vtop');
-      expect(driver.getClassOfLabelAt(1)).toContain('vtop');
-    });
-  });
+    it('should have the correct radio buttons', async () => {
+      const driver = createDriver(<DefaultRadioGroup />);
+      expect(await driver.getNumberOfRadios()).toBe(4);
+      expect(driver.getRadioAtIndex(0)).toBeTruthy();
+      expect(await driver.getRadioValueAt(0)).toBe('1');
 
-  describe('display attribute', () => {
-    it('should be vertical by default', () => {
-      const driver = createDriver(defaultRadioGroup());
-      expect(driver.isVerticalDisplay()).toBe(true);
-      expect(driver.isHorizontalDisplay()).toBe(false);
+      const nonExistingIndex = 9999;
+      expect(await driver.getRadioAtIndex(nonExistingIndex)).toBeUndefined();
+      if (async) {
+        await expect(driver.getRadioValueAt(nonExistingIndex)).rejects.toThrow(
+          `No RadioButton at index ${nonExistingIndex}`,
+        );
+      } else {
+        expect(() => driver.getRadioValueAt(nonExistingIndex)).toThrow(
+          `No RadioButton at index ${nonExistingIndex}`,
+        );
+      }
     });
 
-    it('should be horizontal', () => {
-      const driver = createDriver(defaultRadioGroup({ display: 'horizontal' }));
-      expect(driver.isHorizontalDisplay()).toBe(true);
-      expect(driver.isVerticalDisplay()).toBe(false);
-    });
-  });
-
-  describe('spacing attribute', () => {
-    it('should be spaced', () => {
-      const driver = createDriver(defaultRadioGroup({ spacing: '30px' }));
-      expect(driver.spacing()).toBe('30px');
-    });
-  });
-
-  describe('line-height attribute', () => {
-    it('should have default value', () => {
-      const driver = createDriver(defaultRadioGroup());
-      expect(driver.lineHeight()).toBe(RadioGroup.defaultProps.lineHeight);
-    });
-  });
-
-  describe('testkit', () => {
-    it('should exist', () => {
-      expect(isTestkitExists(<RadioGroup />, radioGroupTestkitFactory)).toBe(
-        true,
+    it('should return true if a radio button is disabled and false otherwise', async () => {
+      const disabledRadios = ['1', '2'];
+      const driver = createDriver(
+        <DefaultRadioGroup disabledRadios={disabledRadios} />,
       );
+      expect(await driver.isRadioDisabled(0)).toBe(true);
+      expect(await driver.isRadioDisabled(1)).toBe(true);
+      expect(await driver.isRadioDisabled(2)).toBe(false);
+      expect(await driver.isRadioDisabled(3)).toBe(false);
     });
-  });
 
-  describe('enzyme testkit', () => {
-    it('should exist', () => {
-      expect(
-        isEnzymeTestkitExists(
-          <RadioGroup />,
-          enzymeRadioGroupTestkitFactory,
-          mount,
-        ),
-      ).toBe(true);
+    it('should check the option that matches the initial value', async () => {
+      const value = '2';
+      const driver = createDriver(<DefaultRadioGroup value={'2'} />);
+      expect(await driver.getSelectedValue()).toBe(value);
     });
-  });
+
+    it('should update selected value after change to props', async () => {
+      const { driver, rerender } = render(<DefaultRadioGroup value={'1'} />);
+      const value = '2';
+      rerender(<DefaultRadioGroup value={'2'} />);
+      expect(await driver.getSelectedValue()).toBe(value);
+    });
+
+    it('should not check any options if value was not matched', async () => {
+      const value = 10;
+      const driver = createDriver(<DefaultRadioGroup value={value} />);
+      expect(await driver.getSelectedValue()).toBe(null);
+    });
+
+    describe('onChange attribute', () => {
+      it('should be called with the correct option value', async () => {
+        const onChange = jest.fn();
+        const driver = createDriver(<DefaultRadioGroup onChange={onChange} />);
+
+        // Select by value
+        await driver.selectByValue('1');
+        expect(onChange).toHaveBeenNthCalledWith(1, '1');
+
+        // Select by index
+        await driver.selectByIndex(1);
+        expect(onChange).toHaveBeenNthCalledWith(2, '2');
+      });
+
+      it('should not be called upon checked option', async () => {
+        const value = 1;
+        const onChange = jest.fn();
+        const driver = createDriver(
+          <DefaultRadioGroup onChan={onChange} value={value} />,
+        );
+
+        // Select by value
+        await driver.selectByValue('1');
+        expect(onChange).not.toHaveBeenCalled();
+
+        // Select by index
+        await driver.selectByIndex(0);
+        expect(onChange).not.toHaveBeenCalled();
+      });
+
+      it('should not be called upon disabled option', async () => {
+        const disabledRadios = ['1'];
+        const onChange = jest.fn();
+        const driver = createDriver(
+          <DefaultRadioGroup
+            onChange={onChange}
+            disabledRadios={disabledRadios}
+          />,
+        );
+
+        // Select by value
+        await driver.selectByValue('1');
+        expect(onChange).not.toHaveBeenCalled();
+
+        // Select by index
+        await driver.selectByIndex(0);
+        expect(onChange).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('vAlign attribute', () => {
+      const radioGroup = props => (
+        <RadioGroup {...props}>
+          <RadioGroup.Radio value={1}>Option 1</RadioGroup.Radio>
+          <RadioGroup.Radio value={2}>Option 2</RadioGroup.Radio>
+        </RadioGroup>
+      );
+
+      it('should have a default vcenter class', async () => {
+        const driver = createDriver(radioGroup());
+        expect(await driver.getClassOfLabelAt(0)).toContain('vcenter');
+        expect(await driver.getClassOfLabelAt(1)).toContain('vcenter');
+      });
+
+      it('should have a vtop class', async () => {
+        const driver = createDriver(radioGroup({ vAlign: 'top' }));
+        expect(await driver.getClassOfLabelAt(0)).toContain('vtop');
+        expect(await driver.getClassOfLabelAt(1)).toContain('vtop');
+      });
+    });
+
+    describe('display attribute', () => {
+      it('should be vertical by default', async () => {
+        const driver = createDriver(<DefaultRadioGroup />);
+        expect(await driver.isVerticalDisplay()).toBe(true);
+        expect(await driver.isHorizontalDisplay()).toBe(false);
+      });
+
+      it('should be horizontal', async () => {
+        const driver = createDriver(
+          <DefaultRadioGroup display={'horizontal'} />,
+        );
+        expect(await driver.isHorizontalDisplay()).toBe(true);
+        expect(await driver.isVerticalDisplay()).toBe(false);
+      });
+    });
+
+    describe('spacing attribute', () => {
+      it('should be spaced', async () => {
+        const driver = createDriver(<DefaultRadioGroup spacing={'30px'} />);
+        expect(await driver.spacing()).toBe('30px');
+      });
+    });
+
+    describe('line-height attribute', () => {
+      it('should have default value', async () => {
+        const driver = createDriver(<DefaultRadioGroup />);
+        expect(await driver.lineHeight()).toBe(
+          RadioGroup.defaultProps.lineHeight,
+        );
+      });
+    });
+  }
 });

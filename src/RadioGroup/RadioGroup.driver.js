@@ -1,43 +1,80 @@
 import toArray from 'lodash/toArray';
 import { isClassExists } from '../../test/utils';
 import radioButtonDriverFactory from './RadioButton/RadioButton.driver';
+import { dataHooks } from './constants';
 
 const radioGroupDriverFactory = ({ element }) => {
-  const radios = () =>
-    (toArray(element.children) || []).map(radio =>
+  const getRadios = () =>
+    toArray(
+      element.querySelectorAll(
+        `[data-hook="${dataHooks.RadioGroupRadioContainer}"] > div`,
+      ),
+    ).map(radio =>
       Object.assign(radio, radioButtonDriverFactory({ element: radio })),
     );
-  const labels = () => radios().map(radio => radio.getLabelElement());
-  const selectedRadio = () => radios().find(radio => radio.isChecked());
+
+  const getLabelElements = () =>
+    getRadios().map(radio => radio.getLabelElement());
+
+  const getSelectedRadio = () => getRadios().find(radio => radio.isChecked());
+
   const getRadioByValue = value => {
     const stringValue = value.toString();
-    return radios().find(radio => radio.getValue() === stringValue);
+    return getRadios().find(radio => radio.getValue() === stringValue);
   };
 
   return {
+    /** Checks that the element exists */
     exists: () => !!element,
+
+    /** Selects the radio that matches the provided value */
     selectByValue: value => getRadioByValue(value).check(),
-    selectByIndex: index => radios()[index].check(),
+
+    /** Selects the radio at the provided index */
+    selectByIndex: index => getRadios()[index].check(),
+
+    /** Get the radio value at the provided index */
     getRadioValueAt: index => {
-      const radio = radios()[index];
+      const radio = getRadios()[index];
       if (radio) return radio.getValue();
 
       // Throws an error in case there is no RadioButton at the given index
       throw new Error(`No RadioButton at index ${index}`);
     },
-    getRadioAtIndex: index => radios()[index],
+
+    /** Get the radio element in the provided index */
+    getRadioAtIndex: index => getRadios()[index],
+
+    /** Get the value of the selected radio */
     getSelectedValue: () => {
-      const selected = selectedRadio();
+      const selected = getSelectedRadio();
       return selected ? selected.getValue() : null;
     },
-    isRadioDisabled: index => radios()[index].isDisabled(),
+
+    /** Checks if the radio in the provided index is disabled */
+    isRadioDisabled: index => getRadios()[index].isDisabled(),
+
     // TODO: We should deprecate getClassOfLabelAt(). Css tests should be in e2e tests.
-    getClassOfLabelAt: index => labels()[index].className,
+    /** Get the class of the label element at the provided index */
+    getClassOfLabelAt: index => getLabelElements()[index].className,
+
+    /** Checks if the display is set to vertical */
     isVerticalDisplay: () => isClassExists(element, 'vertical'),
+
+    /** Checks if the display is set to horizontal */
     isHorizontalDisplay: () => isClassExists(element, 'horizontal'),
-    spacing: () => element.children['1'].style._values['margin-top'],
-    lineHeight: () => labels()[0].style._values['line-height'],
-    getNumberOfRadios: () => radios().length,
+
+    /** Get the value of applied spacing between radios */
+    spacing: () =>
+      element.querySelectorAll(
+        `[data-hook="${dataHooks.RadioGroupRadioContainer}"]`,
+      )[1].style._values['margin-top'],
+
+    /** Get the value of applied line-height on the radio's labels */
+    lineHeight: () => getLabelElements()[0].style._values['line-height'],
+
+    /** Get the number of rendered radios */
+    getNumberOfRadios: () => getRadios().length,
   };
 };
 

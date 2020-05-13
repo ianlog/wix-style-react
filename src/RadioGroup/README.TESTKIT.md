@@ -1,25 +1,3 @@
-# RadioGroup Testkits
-
-> RadioGroup
-
-## RadioGroup TestKit API
-
-| method | arguments | returned value | description |
-|--------|-----------|----------------|-------------|
-| getRadioAtIndex | index | - | get RadioButton element in a group by it's index |
-| selectByIndex | index | - | click on RadioButton in a group by it's index |
-| selectByValue | index | - | click on RadioButton in a group by it's value |
-| getClassOfLabelAt | index | string | returns RadioButton class by it's index |
-| getRadioValueAt | index | number | returns the value of the RadioButton at the given index |
-| getSelectedValue | - | number | returns the value of selected RadioButton |
-| isVerticalDisplay | - | bool | fulfilled if element has class ".vertical" |
-| isHorizontalDisplay | - | bool | fulfilled if element has class ".horizontal" |
-| isRadioChecked | index | bool | fulfilled if RadioButton in group has attribute checked |
-| isRadioDisabled | index | bool | fulfilled if RadioButton in group has attribute disabled |
-| getNumberOfRadios | - | number | get the amount of radio buttons |
-| exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
-| element (Only in E2E) | - | element | returns the driver element |
-
 ## Usage Example
 
 > Unit testing example
