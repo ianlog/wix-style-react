@@ -26,8 +26,8 @@ export const size = `
     <MultiSelect
       size="large"
       tags={[
-        {size: "large", id: '1', label: "tag 1", thumb:(<Avatar name="Sarah" size="size24"/>)},
-        {size: "large", id: '2', label: "tag 2", thumb:(<Avatar name="Hanks" size="size24"/>)}
+        {size: "medium", id: '1', label: "tag 1", thumb:(<Avatar name="Sarah" size="size18"/>)},
+        {size: "medium", id: '2', label: "tag 2", thumb:(<Avatar name="Hanks" size="size18"/>)}
       ]}
     />
     </FormField>
