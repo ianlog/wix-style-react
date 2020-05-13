@@ -59,11 +59,7 @@ class RadioButton extends React.PureComponent {
     } = this.props;
 
     return (
-      <div
-        className={classnames(styles.optionWrapper)}
-        style={style}
-        data-hook={dataHook}
-      >
+      <div style={style} data-hook={dataHook}>
         <div
           className={classnames(styles.radioWrapper, {
             [styles.disabled]: disabled,

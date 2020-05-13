@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import RadioButton from './RadioButton/RadioButton';
 import styles from './RadioGroup.scss';
 import WixComponent from '../BaseComponents/WixComponent';
+import { dataHooks } from './constants';
 
 /**
  * component for easy radio group creation.
@@ -39,26 +40,31 @@ class RadioGroup extends WixComponent {
         })}
       >
         {React.Children.map(this.props.children, (radio, index) => (
-          <RadioGroup.Radio
-            dataHook={radio.props.dataHook}
-            value={radio.props.value}
-            name={this.name}
-            onChange={onChange}
-            vAlign={vAlign}
-            disabled={
-              disabled || disabledRadios.indexOf(radio.props.value) !== -1
-            }
-            checked={radio.props.value === value}
+          <div
+            className={classNames(styles.optionWrapper)}
+            data-hook={dataHooks.RadioGroupRadioContainer}
             style={
               display === 'vertical' && index > 0 ? { marginTop: spacing } : {}
             }
-            selectionArea={selectionArea}
-            icon={radio.props.icon}
-            lineHeight={lineHeight}
-            content={radio.props.content}
           >
-            {radio.props.children}
-          </RadioGroup.Radio>
+            <RadioGroup.Radio
+              dataHook={radio.props.dataHook}
+              value={radio.props.value}
+              name={this.name}
+              onChange={onChange}
+              vAlign={vAlign}
+              disabled={
+                disabled || disabledRadios.indexOf(radio.props.value) !== -1
+              }
+              checked={radio.props.value === value}
+              selectionArea={selectionArea}
+              icon={radio.props.icon}
+              lineHeight={lineHeight}
+              content={radio.props.content}
+            >
+              {radio.props.children}
+            </RadioGroup.Radio>
+          </div>
         ))}
       </div>
     );
