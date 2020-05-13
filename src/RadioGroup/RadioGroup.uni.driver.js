@@ -38,11 +38,7 @@ export const radioGroupUniDriverFactory = (base, body) => {
   return {
     ...baseUniDriverFactory(base, body),
 
-    /**
-     * @param value
-     * @return void
-     * Selects the radio that matches the provided value
-     * */
+    /** Selects the radio that matches the provided value */
     selectByValue: async value => (await getRadioByValue(value)).check(),
 
     /** Selects the radio in the provided index */

@@ -7,7 +7,7 @@ const radioGroupDriverFactory = ({ element }) => {
   const getRadios = () =>
     toArray(
       element.querySelectorAll(
-        `[data-hook="${dataHooks.RadioGroupRadioContainer}"] > div`,
+        `[data-hook="${dataHooks.RadioGroupRadioContainer}"]`,
       ),
     ).map(radio =>
       Object.assign(radio, radioButtonDriverFactory({ element: radio })),
@@ -18,10 +18,8 @@ const radioGroupDriverFactory = ({ element }) => {
 
   const getSelectedRadio = () => getRadios().find(radio => radio.isChecked());
 
-  const getRadioByValue = value => {
-    const stringValue = value.toString();
-    return getRadios().find(radio => radio.getValue() === stringValue);
-  };
+  const getRadioByValue = value =>
+    getRadios().find(radio => radio.getValue() === value.toString());
 
   return {
     /** Checks that the element exists */
@@ -65,10 +63,7 @@ const radioGroupDriverFactory = ({ element }) => {
     isHorizontalDisplay: () => isClassExists(element, 'horizontal'),
 
     /** Get the value of applied spacing between radios */
-    spacing: () =>
-      element.querySelectorAll(
-        `[data-hook="${dataHooks.RadioGroupRadioContainer}"]`,
-      )[1].style._values['margin-top'],
+    spacing: () => getRadios()[1].style._values['margin-top'],
 
     /** Get the value of applied line-height on the radio's labels */
     lineHeight: () => getLabelElements()[0].style._values['line-height'],

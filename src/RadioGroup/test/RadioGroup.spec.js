@@ -9,6 +9,17 @@ import {
 } from '../../../test/utils/unit';
 
 describe(RadioGroup.displayName, () => {
+  const DefaultRadioGroup = props => (
+    <RadioGroup {...props}>
+      <RadioGroup.Radio value={'1'}>Option 1</RadioGroup.Radio>
+      <RadioGroup.Radio value={'2'}>Option 2</RadioGroup.Radio>
+      <RadioGroup.Radio value={'3'}>Option 3</RadioGroup.Radio>
+      <RadioGroup.Radio value={'4'}>Option 4</RadioGroup.Radio>
+    </RadioGroup>
+  );
+
+  afterEach(cleanup);
+
   describe('[sync]', () => {
     runTests(createRendererWithDriver(radioGroupDriverFactory));
   });
@@ -18,18 +29,7 @@ describe(RadioGroup.displayName, () => {
   });
 
   function runTests(render, async) {
-    afterEach(cleanup);
-
     const createDriver = jsx => render(jsx).driver;
-
-    const DefaultRadioGroup = props => (
-      <RadioGroup {...props}>
-        <RadioGroup.Radio value={'1'}>Option 1</RadioGroup.Radio>
-        <RadioGroup.Radio value={'2'}>Option 2</RadioGroup.Radio>
-        <RadioGroup.Radio value={'3'}>Option 3</RadioGroup.Radio>
-        <RadioGroup.Radio value={'4'}>Option 4</RadioGroup.Radio>
-      </RadioGroup>
-    );
 
     it('should render', async () => {
       const driver = createDriver(<RadioGroup />);

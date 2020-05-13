@@ -12,7 +12,7 @@ export const radioButtonUniDriverFactory = (base, body) => {
     ...baseUniDriverFactory(base, body),
 
     /** Simulating a check action by clicking the input element */
-    check: () => radioButtonInput().click(), // TODO check if this works, might need to change the target element to radio
+    check: () => radioButtonInput().click(),
 
     /** Getting the component's "checked" value */
     isChecked: () => radioButtonInput()._prop('checked'),
