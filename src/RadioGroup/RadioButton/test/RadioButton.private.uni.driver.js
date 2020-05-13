@@ -1,6 +1,6 @@
 import { radioButtonUniDriverFactory as publicDriverFactory } from '../RadioButton.uni.driver';
 
-export const RadioButtonPrivateDriverFactory = (base, body) => {
+export const radioButtonPrivateDriverFactory = (base, body) => {
   return {
     ...publicDriverFactory(base, body),
   };

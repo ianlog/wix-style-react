@@ -1,7 +1,7 @@
 import React from 'react';
 import RadioButton from '../RadioButton';
 import radioButtonDriverFactory from '../RadioButton.driver';
-import { RadioButtonPrivateDriverFactory } from './RadioButton.private.uni.driver';
+import { radioButtonPrivateDriverFactory } from './RadioButton.private.uni.driver';
 import {
   isTestkitExists,
   isEnzymeTestkitExists,
@@ -24,7 +24,7 @@ describe(RadioButton.displayName, () => {
   });
 
   describe('[async]', () => {
-    runTests(createRendererWithUniDriver(RadioButtonPrivateDriverFactory));
+    runTests(createRendererWithUniDriver(radioButtonPrivateDriverFactory));
   });
 
   function runTests(render) {

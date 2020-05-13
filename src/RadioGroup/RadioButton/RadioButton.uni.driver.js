@@ -1,17 +1,12 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
 import { dataHooks } from './constants';
 
-const getByDataHook = (base, dataHook) => base.$(`[data-hook="${dataHook}"]`);
-
 export const radioButtonUniDriverFactory = (base, body) => {
-  const radioButtonWrapper = () =>
-    getByDataHook(base, dataHooks.RadioButtonWrapper);
-  const radioButtonInput = () =>
-    getByDataHook(base, dataHooks.RadioButtonInput);
-  const radioButtonLabel = () =>
-    getByDataHook(base, dataHooks.RadioButtonLabel);
-  const radioButtonContent = () =>
-    getByDataHook(base, dataHooks.RadioButtonContent);
+  const getByDataHook = dataHook => base.$(`[data-hook="${dataHook}"]`);
+  const radioButtonWrapper = () => getByDataHook(dataHooks.RadioButtonWrapper);
+  const radioButtonInput = () => getByDataHook(dataHooks.RadioButtonInput);
+  const radioButtonLabel = () => getByDataHook(dataHooks.RadioButtonLabel);
+  const radioButtonContent = () => getByDataHook(dataHooks.RadioButtonContent);
 
   return {
     ...baseUniDriverFactory(base, body),
