@@ -94,6 +94,13 @@ export default {
               'Search component can start as an icon and expanded when clicked.',
             source: examples.expandable,
           }),
+
+          example({
+            title: 'Sizes',
+            text:
+              'There are 3 sizes: `small` , `medium` (default) and `large`.',
+            source: examples.sizes,
+          }),
         ],
       }),
 

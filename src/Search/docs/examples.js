@@ -63,3 +63,17 @@ class MyComponent extends React.Component {
   }
 }
 `;
+
+export const sizes = `
+      <Layout>
+        <Cell>
+          <Search size="small" />
+        </Cell>
+        <Cell>
+          <Search />
+        </Cell>
+        <Cell>
+          <Search size="large"/>
+        </Cell>
+      </Layout>
+`;
