@@ -1,9 +1,18 @@
 import * as React from 'react';
 
-export interface SortableGridProps {
-  dataHook?: string;
+import WixComponent, {
+  WixComponentProps,
+} from '../BaseComponents/WixComponent';
+import { DraggableProps } from '../DragAndDrop/Draggable';
+
+export interface SortableGridProps extends WixComponentProps, DraggableProps {
+  usePortal?: boolean;
+  dragPreview?: boolean;
+  items?: object[];
   className?: string;
-  buttonText?: string;
+  contentClassName?: string;
+  startFixedElement?: React.ReactNode;
+  endFixedElement?: React.ReactNode;
 }
 
-export default class SortableGrid extends React.PureComponent<SortableGridProps>{}
+export default class SortableGrid extends WixComponent<SortableGridProps> {}

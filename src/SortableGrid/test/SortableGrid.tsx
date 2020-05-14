@@ -15,7 +15,34 @@ function sortableGridWithAllProps() {
     <SortableGrid
       dataHook="dataHook"
       className="className"
-      buttonText="buttonText"
+      contentClassName="cls"
+      dragPreview
+      items={[{ id: '1', text: 'text' }]}
+      usePortal
+      styles="font: 14px"
+      animationDuration={10}
+      animationTiming="aa"
+      canDrag={_params => {}}
+      containerId="aa"
+      delay={10}
+      droppable
+      groupName="name"
+      hasDragged
+      id="1"
+      index={1}
+      item={{}}
+      listOfPropsThatAffectItems={[]}
+      onDragEnd={_params => {}}
+      onDragStart={_params => {}}
+      onDrop={() => {}}
+      onHover={_params => {}}
+      onMoveOut={_params => {}}
+      renderItem={_params => <span />}
+      setWrapperNode={(_node, _index, _item) => {}}
+      shift={[10]}
+      withHandle
+      startFixedElement={<span />}
+      endFixedElement={<span />}
     />
   );
 }
