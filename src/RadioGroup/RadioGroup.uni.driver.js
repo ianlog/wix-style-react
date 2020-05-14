@@ -1,5 +1,5 @@
 import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
-import { radioButtonPrivateDriverFactory } from './RadioButton/test/RadioButton.private.uni.driver';
+import { radioButtonPrivateDriverFactory } from './RadioButton/RadioButton.private.uni.driver';
 import { dataHooks } from './constants';
 
 export const radioGroupUniDriverFactory = (base, body) => {

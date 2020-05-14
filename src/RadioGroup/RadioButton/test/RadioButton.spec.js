@@ -1,7 +1,7 @@
 import React from 'react';
 import RadioButton from '../RadioButton';
 import radioButtonDriverFactory from '../RadioButton.driver';
-import { radioButtonPrivateDriverFactory } from './RadioButton.private.uni.driver';
+import { radioButtonPrivateDriverFactory } from '../RadioButton.private.uni.driver';
 import {
   isTestkitExists,
   isEnzymeTestkitExists,
